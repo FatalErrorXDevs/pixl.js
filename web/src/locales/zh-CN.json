@@ -1,0 +1,16 @@
+{
+  "pixl.header": "Pixl.js",
+  "pixl.upload.btn": "上传",
+  "pixl.newfolder.btn": "新建文件夹",
+  "pixl.delete.btn": "删除",
+  "pixl.parentdirectory.btn": "上级目录",
+  "pixl.refresh.btn": "刷新",
+  "pixl.dfu.btn": "DFU",
+  "pixl.connect.btn": "连接",
+  "pixl.name.tableheader": "文件",
+  "pixl.size.tableheader": "大小",
+  "pixl.type.tableheader": "类型",
+  "pixl.remark.tableheader": "备注",
+  "pixl.load.tabletext": "加载中..",
+  "pixl.empty.tablecontent": "暂无数据"
+}

@@ -1,35 +1,42 @@
 <template>
   <div id="app">
-    <h1 class="header">Pixl.js</h1>
+    <h1 class="header">{{ $t('pixl.header') }}</h1>
+    <el-select v-model="$root.currentLocale" @change="$root.changeLocale">
+      <el-option label="English" value="en"></el-option>
+      <el-option label="中文" value="zh-CN"></el-option>
+      <!-- add more options here for more languages -->
+    </el-select>
     <el-row>
-      <el-col :span="12">
+      <el-col :span="16">
         <div class="action-left">
-          <el-button-group>
+          <el-button-group siz>
             <el-button size="mini" type="primary" icon="el-icon-upload" @click="on_btn_upload"
-              :disabled="btn_disabled()">上传</el-button>
+              :disabled="btn_disabled()">{{ $t('pixl.upload.btn') }}</el-button>
           </el-button-group>
           <el-button-group>
-            <el-button size="mini" icon="el-icon-plus" @click="on_btn_new_folder"
-              :disabled="btn_disabled()">新建文件夹</el-button>
+            <el-button size="mini" icon="el-icon-plus" @click="on_btn_new_folder" :disabled="btn_disabled()">{{
+              $t('pixl.newfolder.btn') }}</el-button>
             <el-button size="mini" type="danger" icon="el-icon-delete" @click="on_btn_remove"
-              :disabled="btn_disabled()">删除</el-button>
+              :disabled="btn_disabled()">{{ $t('pixl.delete.btn') }}</el-button>
           </el-button-group>
           <el-button-group>
-            <el-button size="mini" icon="el-icon-top" @click="on_btn_up" :disabled="btn_disabled()">上级目录</el-button>
-            <el-button size="mini" icon="el-icon-refresh" @click="on_btn_refresh" :disabled="!connected">刷新</el-button>
+            <el-button size="mini" icon="el-icon-top" @click="on_btn_up" :disabled="btn_disabled()">{{
+              $t('pixl.parentdirectory.btn') }}</el-button>
+            <el-button size="mini" icon="el-icon-refresh" @click="on_btn_refresh" :disabled="!connected">{{
+              $t('pixl.refresh.btn') }}</el-button>
           </el-button-group>
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="8">
         <div class="action-right">
           <el-button type="success" size="mini" v-if="version" icon="el-icon-warning">{{ version }}</el-button>
           <el-button-group>
             <el-button type="info" size="mini" icon="el-icon-cpu" @click="on_btn_enter_dfu"
-              :disabled="!connected">DFU</el-button>
-            <el-button :type="connBtnType" size="mini" icon="el-icon-connection" @click="on_btn_ble_connect">{{
-              connBtnText
-            }}</el-button>
+              :disabled="!connected">{{ $t('pixl.dfu.btn') }}</el-button>
+            <el-button :type="connBtnType" size="mini" icon="el-icon-connection" @click="on_btn_ble_connect">
+              {{ $t('pixl.connect.btn') }}</el-button>
           </el-button-group>
+
         </div>
       </el-col>
     </el-row>
@@ -44,23 +51,25 @@
     </el-row>
     <div>
       <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" v-loading="table_loading"
-        element-loading-text="加载中.." element-loading-spinner="el-icon-loading" cell-class-name="file-cell"
+        :empty-text="$t('pixl.empty.tablecontent')" :element-loading-text="$t('pixl.load.tabletext')"
+        element-loading-spinner="el-icon-loading" cell-class-name="file-cell"
         @selection-change="on_table_selection_change" @sort-change="on_table_sort_change"
         :default-sort="{ prop: 'name', order: 'ascending' }">
         <el-table-column type="selection" width="42">
         </el-table-column>
-        <el-table-column prop="name" label="文件" sortable @sort-method="sort_table_row_name" width="320">
+        <el-table-column prop="name" :label="$t('pixl.name.tableheader')" sortable @sort-method="sort_table_row_name"
+          width="320">
           <template slot-scope="scope">
             <i :class="scope.row.icon"></i>
             <el-link :underline="false" @click="handle_name_click(scope.$index, scope.row)">
               {{ scope.row.name }}</el-link>
           </template>
         </el-table-column>
-        <el-table-column prop="size" label="大小" sortable width="150">
+        <el-table-column prop="size" :label="$t('pixl.size.tableheader')" sortable width="150">
         </el-table-column>
-        <el-table-column prop="type" label="类型" sortable width="80">
+        <el-table-column prop="type" :label="$t('pixl.type.tableheader')" sortable width="80">
         </el-table-column>
-        <el-table-column prop="notes" label="备注" sortable>
+        <el-table-column prop="notes" :label="$t('pixl.remark.tableheader')" sortable>
         </el-table-column>
         <el-table-column label="" fixed="right" width="40">
           <template slot-scope="scope">
@@ -134,7 +143,6 @@ export default {
     return {
       tableData: [],
       connBtnType: "",
-      connBtnText: "连接",
       version: "",
       connected: false,
       table_loading: false,
@@ -188,7 +196,7 @@ export default {
 
         var v = res.data;
 
-        LA.track("pixl_device_connect", {"version": v.ver, "mac": v.ble_addr});
+        LA.track("pixl_device_connect", { "version": v.ver, "mac": v.ble_addr });
 
         this.reload_drive();
       });
@@ -692,5 +700,4 @@ export default {
 .header {
   text-align: center;
   margin: 100px auto;
-}
-</style>
+}</style>

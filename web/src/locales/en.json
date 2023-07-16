@@ -1,0 +1,15 @@
+{
+    "pixl.header": "Pixl.js",
+    "pixl.upload.btn": "Upload",
+    "pixl.newfolder.btn": "New folder",
+    "pixl.delete.btn": "Delete",
+    "pixl.parentdirectory.btn": "Parent Directory",
+    "pixl.refresh.btn": "Refresh",
+    "pixl.dfu.btn": "DFU",
+    "pixl.connect.btn": "Connect",
+    "pixl.name.tableheader": "Name",
+    "pixl.size.tableheader": "Size",
+    "pixl.type.tableheader": "Type",
+    "pixl.remark.tableheader": "Remark",
+    "pixl.empty.tablecontent": "No Data"
+  }
