@@ -79,15 +79,15 @@
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item @click.native="on_row_btn_remove(scope.$index, scope.row)"
-                  v-if="scope.row.type != 'DRIVE'">删除</el-dropdown-item>
+                  v-if="scope.row.type != 'DRIVE'">{{$t('pixl.delete.tableaction')}}</el-dropdown-item>
                 <el-dropdown-item @click.native="on_row_btn_rename(scope.$index, scope.row)"
-                  v-if="scope.row.type != 'DRIVE'">重命名..</el-dropdown-item>
+                  v-if="scope.row.type != 'DRIVE'">{{$t('pixl.rename.tableaction')}}</el-dropdown-item>
                 <!-- <el-dropdown-item @click.native="on_row_btn_notes(scope.$index, scope.row)"
                   v-if="scope.row.type != 'DRIVE'">备注..</el-dropdown-item> -->
                 <el-dropdown-item @click.native="on_row_btn_meta(scope.$index, scope.row)"
-                  v-if="scope.row.type != 'DRIVE'">元信息..</el-dropdown-item>
+                  v-if="scope.row.type != 'DRIVE'">{{$t('pixl.metainfo.tableaction')}}</el-dropdown-item>
                 <el-dropdown-item @click.native="on_row_btn_format(scope.$index, scope.row)"
-                  v-if="scope.row.type == 'DRIVE'">格式化</el-dropdown-item>
+                  v-if="scope.row.type == 'DRIVE'">{{$t('pixl.format.tableaction')}}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </template>

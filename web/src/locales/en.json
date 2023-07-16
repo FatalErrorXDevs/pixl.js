@@ -11,5 +11,10 @@
     "pixl.size.tableheader": "Size",
     "pixl.type.tableheader": "Type",
     "pixl.remark.tableheader": "Remark",
-    "pixl.empty.tablecontent": "No Data"
+    "pixl.empty.tablecontent": "No Data",
+    "pixl.delete.tableaction": "Delete",
+    "pixl.rename.tableaction": "Rename",
+    "pixl.metainfo.tableaction": "Meta information",
+    "pixl.format.tableaction": "Format"
+
   }

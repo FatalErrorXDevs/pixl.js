@@ -12,5 +12,9 @@
   "pixl.type.tableheader": "类型",
   "pixl.remark.tableheader": "备注",
   "pixl.load.tabletext": "加载中..",
-  "pixl.empty.tablecontent": "暂无数据"
+  "pixl.empty.tablecontent": "暂无数据",
+  "pixl.delete.tableaction": "删除",
+  "pixl.rename.tableaction": "重命名..",
+  "pixl.metainfo.tableaction": "元信息..",
+  "pixl.format.tableaction": "格式化"
 }
